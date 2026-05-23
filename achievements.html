@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Achievements — Gold Gaming09</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-canvas: #05050a;
+            --surface-card: rgba(13, 13, 33, 0.45);
+            --surface-glass: rgba(255, 255, 255, 0.03);
+            --border-subtle: rgba(255, 255, 255, 0.07);
+            --accent-blue: #3b82f6;
+            --accent-gold: #f59e0b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-canvas);
+            background-image: radial-gradient(circle at 50% -20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+            color: var(--text-primary); min-height: 100vh; line-height: 1.6;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.35rem;
+            padding: 0.4rem;
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(5, 5, 10, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            z-index: 1000;
+            border: 1px solid var(--border-subtle);
+            border-radius: 40px;
+            width: max-content;
+        }
+
+        nav button {
+            background: transparent;
+            border: 1px solid transparent;
+            padding: 0.65rem 1rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        nav button:hover { color: var(--text-primary); }
+        nav button.active { background: var(--surface-glass); border-color: var(--border-subtle); color: var(--text-primary); box-shadow: inset 0 1px 1px rgba(255,255,255,0.1); }
+
+        .container { max-width: 750px; margin: 0 auto; padding: 140px 1rem 60px; text-align: center; }
+        
+        .achievement-box {
+            background: var(--surface-card); padding: 3.5rem 1.75rem; border-radius: 32px;
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        @media (hover: hover) {
+            .achievement-box:hover {
+                transform: translateY(-8px);
+                border-color: rgba(245, 158, 11, 0.25);
+                box-shadow: 0 50px 90px rgba(0,0,0,0.65), 0 0 50px rgba(245, 158, 11, 0.02);
+            }
+        }
+
+        .trophy-emoji { 
+            font-size: 3.5rem; display: block; margin-bottom: 1rem; 
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @media (hover: hover) {
+            .achievement-box:hover .trophy-emoji { transform: scale(1.15) rotate(4deg); }
+        }
+        
+        h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.25rem; margin-bottom: 1rem; font-weight: 700; letter-spacing: -0.02em; }
+        
+        .live-rank-link {
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-subtle); padding: 1rem 1.5rem; border-radius: 16px;
+            color: #fff; text-decoration: none; font-size: 1rem; font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); margin: 2rem 0; width: 100%; max-width: 320px;
+        }
+
+        @media (hover: hover) {
+            .live-rank-link:hover { 
+                transform: translateY(-3px); 
+                background: var(--text-primary); 
+                color: var(--bg-canvas);
+                box-shadow: 0 15px 30px rgba(255,255,255,0.1);
+            }
+        }
+        .live-rank-link:active { transform: scale(0.97); }
+
+        .coming-soon-banner {
+            font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; color: #f97316;
+            letter-spacing: 0.05em; text-transform: uppercase; font-weight: 700;
+            display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+            background: rgba(249, 115, 22, 0.05); width: max-content; margin: 1.5rem auto 0;
+            padding: 0.4rem 1rem; border-radius: 30px; border: 1px solid rgba(249, 115, 22, 0.15);
+        }
+
+        @media (max-width: 600px) {
+            nav { width: calc(100% - 20px); overflow-x: auto; border-radius: 24px; padding: 0.3rem; }
+            nav button { padding: 0.5rem 0.85rem; font-size: 0.8rem; }
+            .container { padding-top: 110px; }
+            h1 { font-size: 1.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <button onclick="window.location.href='index.html#piezo'">Piezo Plate</button>
+        <button onclick="window.location.href='index.html#swords'">Swords Mod</button>
+        <button onclick="window.location.href='achievements.html'" class="active">Achievements</button>
+        <button onclick="window.location.href='socials.html'">Socials</button>
+        <button onclick="window.location.href='about.html'">About Me</button>
+    </nav>
+
+    <div class="container">
+        <div class="achievement-box">
+            <span class="trophy-emoji">🏆</span>
+            <h1>Competitive Ladders</h1>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; max-width: 500px; margin: 0 auto;">
+                Live performance tracking indexes and combat efficiency ratings inside high-tier global network divisions.
+            </p>
+
+            <a href="https://flowpvp.gg/user/Gold_Gaming09" target="_blank" class="live-rank-link">
+                <span>Access Live Position Matrix</span>
+            </a>
+
+            <div class="coming-soon-banner">top thousand worldwide soon</div>
+        </div>
+    </div>
+
+</body>
+</html>
